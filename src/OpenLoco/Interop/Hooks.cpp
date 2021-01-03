@@ -16,6 +16,7 @@
 #include "../Gui.h"
 #include "../Input.h"
 #include "../Map/Tile.h"
+#include "../Map/TileManager.h"
 #include "../Paint/Paint.h"
 #include "../Platform/Platform.h"
 #include "../S5/S5.h"
@@ -764,6 +765,7 @@ void OpenLoco::Interop::registerHooks()
         });
 
     Ui::ProgressBar::registerHooks();
+    OpenLoco::Map::TileManager::registerHooks();
     Ui::PromptBrowse::registerHooks();
     Ui::Windows::TextInput::registerHooks();
     Ui::ToolTip::registerHooks();

@@ -81,6 +81,7 @@ namespace OpenLoco
 
         Vehicles::VehicleBase* asVehicle() const { return asBase<Vehicles::VehicleBase, EntityBaseType::vehicle>(); }
         MiscBase* asMisc() const { return asBase<MiscBase, EntityBaseType::misc>(); }
+        bool isEmpty() const;
 
     protected:
         uint8_t getSubType() const { return type; }
