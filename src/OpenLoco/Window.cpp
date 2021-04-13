@@ -764,6 +764,7 @@ namespace OpenLoco::Ui
         }
     }
 
+    // 0x004421FB
     void window::viewportFromSavedView(const SavedViewSimple& savedView)
     {
         auto viewport = viewports[0];
@@ -777,7 +778,7 @@ namespace OpenLoco::Ui
             auto zoom = static_cast<int32_t>(savedView.zoomLevel) - viewport->zoom;
             if (zoom != 0)
             {
-                if (viewport->zoom < 0)
+                if (zoom < 0)
                 {
                     zoom = -zoom;
                     viewport->view_width >>= zoom;

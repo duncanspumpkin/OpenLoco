@@ -84,7 +84,6 @@ namespace OpenLoco::Title
     static TitleSequence::const_iterator _sequenceIterator;
     static uint16_t _waitCounter;
 
-    static loco_global<uint8_t, 0x00508F1A> _gameSpeed;
     static loco_global<uint16_t, 0x0050C19A> _50C19A;
     static loco_global<uint16_t, 0x00525F62> _525F62;
 
@@ -137,15 +136,20 @@ namespace OpenLoco::Title
         }
     }
 
+    static void reload()
+    {
+        loadTitle();
+        resetScreenAge();
+        _50C19A = 55000;
+        update();
+    }
+
     // 0x00444357
     static void reset()
     {
         _sequenceIterator = _titleSequence.begin();
         _waitCounter = 0;
-        loadTitle();
-        resetScreenAge();
-        _50C19A = 55000;
-        update();
+        reload();
     }
 
     // 0x0046AD7D
@@ -206,10 +210,7 @@ namespace OpenLoco::Title
                                _waitCounter = step.duration - 1;
                            },
                            [](ReloadStep step) {
-                               loadTitle();
-                               Gfx::invalidateScreen();
-                               resetScreenAge();
-                               addr<0x50C19A, uint16_t>() = 55000;
+                               reload();
                            },
                            [](MoveStep step) {
                                if (addr<0x00525E28, uint32_t>() & 1)
