@@ -770,7 +770,7 @@ namespace OpenLoco::Ui
         if (viewport != nullptr)
         {
             auto& config = viewport_configurations[0];
-            config.viewport_target_sprite = ThingId::null;
+            config.viewport_target_sprite = EntityId::null;
             config.saved_view_x = savedView.mapX;
             config.saved_view_y = savedView.mapY;
 

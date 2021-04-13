@@ -245,15 +245,15 @@ namespace OpenLoco
                         auto industryObject = tileIndustry->object();
                         if (industryObject != nullptr)
                         {
-                            auto offsets = word_4F9274;
+                            auto animOffsets = word_4F9274;
                             if (industryObject->var_C6 & (1 << industryEl->var_6_1F()))
                             {
-                                offsets = word_4F927C;
+                                animOffsets = word_4F927C;
                             }
-                            while (offsets[0].x != Location::null)
+                            while (animOffsets[0].x != Location::null)
                             {
-                                TileManager::createAnimation(3, tilePos.x + offsets->x, tilePos.y + offsets->y, baseZ);
-                                offsets++;
+                                TileManager::createAnimation(3, tilePos.x + animOffsets->x, tilePos.y + animOffsets->y, baseZ);
+                                animOffsets++;
                             }
                         }
                     }

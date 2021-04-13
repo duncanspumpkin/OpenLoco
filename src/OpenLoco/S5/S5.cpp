@@ -615,7 +615,7 @@ namespace OpenLoco::S5
                 mainWindow->viewportFromSavedView(savedView);
             }
 
-            ThingManager::updateSpatialIndex();
+            EntityManager::updateSpatialIndex();
             TownManager::updateLabels();
             StationManager::updateLabels();
             sub_4BAEC4();
