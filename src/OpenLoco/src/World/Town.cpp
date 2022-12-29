@@ -11,6 +11,7 @@
 #include "OpenLoco.h"
 #include "TownManager.h"
 #include "Ui/WindowManager.h"
+#include "Vehicles/Vehicle.h"
 #include <OpenLoco/Interop/Interop.hpp>
 #include <OpenLoco/Utility/Numeric.hpp>
 #include <algorithm>
@@ -445,5 +446,30 @@ namespace OpenLoco
             return GameCommands::doCommand(args, GameCommands::Flags::apply) == GameCommands::FAILURE;
         };
         squareSearch({ x, y }, 9, placeRoadAtTile);
+    }
+
+    static loco_global<World::Pos2[16], 0x00503C6C> _503C6C;
+
+    static void sub_47AC3E(const World::Pos3& loc, Vehicles::TrackAndDirection::_RoadAndDirection tad)
+    {
+        const auto roadStart = [tad, &loc]() {
+            if (tad.isReversed())
+            {
+                auto& roadSize = World::TrackData::getUnkRoad(tad._data);
+                auto roadStart = loc + roadSize.pos;
+                if (roadSize.rotationEnd < 12)
+                {
+                    roadStart -= World::Pos3{ _503C6C[roadSize.rotationEnd], 0 };
+                }
+                return roadStart;
+            }
+            else
+            {
+                return loc;
+            };
+        }();
+        const auto startDirection = tad.cardinalDirection();
+        const auto& roadPieceZero = World::TrackData::getRoadPiece(tad.id())[0];
+        const auto roadStart2 = roadStart + World::Pos3{ Math::Vector::rotate(World::Pos2{ roadPieceZero.x, roadPieceZero.y }, startDirection), roadPieceZero.z };
     }
 }
