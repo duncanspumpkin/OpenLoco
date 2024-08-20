@@ -189,9 +189,11 @@ namespace OpenLoco
     {
         none = 0U,
         flag_00 = 1U << 0,
-        unk_01 = 1U << 1,
+        flag_01 = 1U << 1,
         flag_02 = 1U << 2, // rollable? APT Passenger carriage
         flag_03 = 1U << 3, // rollable? APT Driving carriage
+        flag_04 = 1U << 4,
+        flag_05 = 1U << 5,
         rackRail = 1U << 6,
         unk_08 = 1U << 8,
         unk_09 = 1U << 9, // anytrack??
