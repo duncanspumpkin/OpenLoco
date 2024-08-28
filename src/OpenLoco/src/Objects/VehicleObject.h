@@ -195,6 +195,7 @@ namespace OpenLoco
         flag_04 = 1U << 4,
         carriagePositionCentered = 1U << 5,
         rackRail = 1U << 6,
+        flag_07 = 1U << 7,
         unk_08 = 1U << 8,
         unk_09 = 1U << 9, // anytrack??
         speedControl = 1U << 10,
