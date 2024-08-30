@@ -950,5 +950,7 @@ namespace OpenLoco::Vehicles
     uint32_t getNumUnitsForCargo(uint32_t maxPrimaryCargo, uint8_t primaryCargoId, uint8_t newCargoId);
     void removeAllCargo(CarComponent& carComponent);
 
+    void sub_4AF4D6(Vehicles::VehicleBogie& source, Vehicles::VehicleBase& dest);
+
     void registerHooks();
 }
