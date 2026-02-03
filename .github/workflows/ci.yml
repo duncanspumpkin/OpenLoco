@@ -325,9 +325,10 @@ jobs:
       - name: Install to artifacts
         run: |
           cmake --build --preset macos-vcpkg-static --target install
+          zip -rqy OpenLoco-macos-arm64.zip OpenLoco.app
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: OpenLoco-macos-arm64
-          path: artifacts
+          path: artifacts/OpenLoco-macos-arm64.zip
           if-no-files-found: error
