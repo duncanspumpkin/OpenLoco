@@ -8,6 +8,7 @@
 - Fix: [#3638] Loan can go negative.
 - Fix: [#3655] Incorrect scaffolding preview image in object selection window.
 - Fix: [#3694] Crash when starting bus/truck immediately behind another bus/truck (original bug).
+THIS IS A TEST
 
 26.03.1 (2026-04-01)
 ------------------------------------------------------------------------
